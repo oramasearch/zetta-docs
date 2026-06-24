@@ -23,6 +23,7 @@ This site is the **design blueprint** for Orama Zetta. It is generated from the 
 | [Backlog](backlog.md) | Features, user stories, use cases, business rules |
 | [Testing](testing.md) | Test plan + test cases |
 | [Risks](risks.md) | Gating risks + mitigations |
+| [Governance](governance.md) | Reviews + approval gates |
 | [Glossary](glossary.md) | Load-bearing terms |
 | [Diagrams](diagrams.md) | Architecture + traceability (Graphviz) |
 

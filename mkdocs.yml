@@ -49,5 +49,6 @@ nav:
   - Backlog: backlog.md
   - Testing: testing.md
   - Risks: risks.md
+  - Governance: governance.md
   - Glossary: glossary.md
   - Diagrams: diagrams.md

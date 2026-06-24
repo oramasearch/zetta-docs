@@ -1,0 +1,44 @@
+digraph domain_context {
+  rankdir=LR; bgcolor="transparent";
+  node [shape=box style="rounded,filled" fontname="Helvetica" fontsize=10 fillcolor="#f3e5f5"];
+  subgraph cluster_1 { label="Authoring"; style="rounded,filled"; fillcolor="#fafafa"; fontname="Helvetica"; fontsize=11;
+    "ENT-1" [label="ENT-1\nProject", fillcolor="#f3e5f5"];
+    "ENT-2" [label="ENT-2\nImportedArtifact", fillcolor="#f3e5f5"];
+    "ENT-3" [label="ENT-3\nExecutionGraph", fillcolor="#f3e5f5"];
+    "ENT-4" [label="ENT-4\nGraphVersion", fillcolor="#f3e5f5"];
+    "ENT-5" [label="ENT-5\nValidationReport", fillcolor="#f3e5f5"];
+  }
+  subgraph cluster_2 { label="Orchestration & Infrastructure"; style="rounded,filled"; fillcolor="#fafafa"; fontname="Helvetica"; fontsize=11;
+    "ENT-6" [label="ENT-6\nDeploymentTarget", fillcolor="#f3e5f5"];
+    "ENT-7" [label="ENT-7\nCloudProvider", fillcolor="#f3e5f5"];
+    "ENT-8" [label="ENT-8\nEnrollmentToken", fillcolor="#f3e5f5"];
+    "ENT-9" [label="ENT-9\nBurstRequest", fillcolor="#f3e5f5"];
+  }
+  subgraph cluster_3 { label="Execution & Compute"; style="rounded,filled"; fillcolor="#fafafa"; fontname="Helvetica"; fontsize=11;
+    "ENT-10" [label="ENT-10\nRunner", fillcolor="#f3e5f5"];
+    "ENT-11" [label="ENT-11\nExtension", fillcolor="#f3e5f5"];
+    "ENT-12" [label="ENT-12\nRun", fillcolor="#f3e5f5"];
+    "ENT-13" [label="ENT-13\nComputeJob", fillcolor="#f3e5f5"];
+    "ENT-14" [label="ENT-14\nModel", fillcolor="#f3e5f5"];
+    "ENT-15" [label="ENT-15\nIndex", fillcolor="#f3e5f5"];
+    "ENT-16" [label="ENT-16\nRunOutput", fillcolor="#f3e5f5"];
+  }
+  subgraph cluster_4 { label="Data & Storage"; style="rounded,filled"; fillcolor="#fafafa"; fontname="Helvetica"; fontsize=11;
+    "ENT-17" [label="ENT-17\nSourceConnection", fillcolor="#f3e5f5"];
+    "ENT-18" [label="ENT-18\nMaterializedView", fillcolor="#f3e5f5"];
+    "ENT-19" [label="ENT-19\nStorageTier", fillcolor="#f3e5f5"];
+  }
+  subgraph cluster_5 { label="Governance & Identity"; style="rounded,filled"; fillcolor="#fafafa"; fontname="Helvetica"; fontsize=11;
+    "ENT-20" [label="ENT-20\nPrincipal", fillcolor="#f3e5f5"];
+    "ENT-21" [label="ENT-21\nAccessKey", fillcolor="#f3e5f5"];
+    "ENT-22" [label="ENT-22\nCapability", fillcolor="#f3e5f5"];
+    "ENT-23" [label="ENT-23\nAuditEvent", fillcolor="#f3e5f5"];
+    "ENT-24" [label="ENT-24\nApprovalRequest", fillcolor="#f3e5f5"];
+    "ENT-25" [label="ENT-25\nNodeIdentity", fillcolor="#f3e5f5"];
+  }
+  subgraph cluster_6 { label="Experience & Learning"; style="rounded,filled"; fillcolor="#fafafa"; fontname="Helvetica"; fontsize=11;
+    "ENT-26" [label="ENT-26\nGroundedExperience", fillcolor="#f3e5f5"];
+    "ENT-27" [label="ENT-27\nEvalTask", fillcolor="#f3e5f5"];
+    "ENT-28" [label="ENT-28\nPolicy", fillcolor="#f3e5f5"];
+  }
+}
