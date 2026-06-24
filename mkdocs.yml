@@ -1,0 +1,53 @@
+site_name: Orama Zetta — Blueprint
+site_description: Intelligence Velocity for Big Thinkers. The Orama Zetta design blueprint, references, and diagrams.
+docs_dir: docs
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle: { icon: material/weather-night, name: Dark }
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle: { icon: material/weather-sunny, name: Light }
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - toc.integrate
+    - content.code.copy
+    - search.suggest
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc: { permalink: true }
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.highlight
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Strategy: strategy.md
+  - Personas & Stakeholders: personas.md
+  - Requirements: requirements.md
+  - Architecture: architecture.md
+  - Domain Model: domain-model.md
+  - Data & Storage: data.md
+  - APIs: apis.md
+  - Security: security.md
+  - UX: ux.md
+  - Delivery: delivery.md
+  - Backlog: backlog.md
+  - Testing: testing.md
+  - Risks: risks.md
+  - Glossary: glossary.md
+  - Diagrams: diagrams.md
