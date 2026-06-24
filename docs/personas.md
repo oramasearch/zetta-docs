@@ -76,8 +76,8 @@ Approves the contractor/deployment model; requires no data egress, identity-scop
 
 `draft`  ·  `stakeholder`  ·  issue [#232](https://github.com/oramasearch/zetta/issues/232)
 
-Builds Orama Zetta and co-sequences the ZettaDB engine roadmap.
+Builds Orama Zetta and co-sequences the Orama Zetta engine roadmap.
 
-Owns the GUI/compiler/correctness-gate and must co-own ZettaDB's substrate roadmap (tiered storage, compute-near-data, indexing, deploy, auth) since the product's value is gated on it.
+Owns the GUI/compiler/correctness-gate and must co-own Orama Zetta's substrate roadmap (tiered storage, compute-near-data, indexing, deploy, auth) since the product's value is gated on it.
 
 **Realizes / depends on / relates to:** relates to → [`RSK-1`](risks.md#rsk-1)

@@ -81,9 +81,9 @@ Before deployment, run a correctness gate that includes compilation checks and e
 
 `draft`  ·  `functional_requirement`  ·  issue [#146](https://github.com/oramasearch/zetta/issues/146)
 
-Deploy ZettaDB nodes and the validated execution graph onto customer-controlled targets; R1 must deploy to a local ZettaDB node/runtime, while Kubernetes and major clouds/on-prem provisioners are planned behind feature flags.
+Deploy Orama Zetta nodes and the validated execution graph onto customer-controlled targets; R1 must deploy to a local Orama Zetta node/runtime, while Kubernetes and major clouds/on-prem provisioners are planned behind feature flags.
 
-Deploy ZettaDB nodes and the validated execution graph onto customer-controlled targets; R1 must deploy to a local ZettaDB node/runtime, while Kubernetes and major clouds/on-prem provisioners are planned behind feature flags.
+Deploy Orama Zetta nodes and the validated execution graph onto customer-controlled targets; R1 must deploy to a local Orama Zetta node/runtime, while Kubernetes and major clouds/on-prem provisioners are planned behind feature flags.
 
 **Realizes / depends on / relates to:** realizes → [`SCR-5`](ux.md#scr-5) · satisfies → [`SR-1`](requirements.md#sr-1)
 **Referenced by:** [`FEAT-4`](backlog.md#feat-4) realizes · [`IR-1`](requirements.md#ir-1) depends on · [`NFR-1`](requirements.md#nfr-1) satisfies · [`NFR-2`](requirements.md#nfr-2) verifies
@@ -148,13 +148,13 @@ Integrate with local runtime in R1 and define provider interfaces for Kubernetes
 
 ## Data Requirements
 
-### DR-1 — ZettaDB as control-plane state store  {: #dr-1 }
+### DR-1 — Orama Zetta as control-plane state store  {: #dr-1 }
 
 `draft`  ·  `data_requirement`  ·  issue [#78](https://github.com/oramasearch/zetta/issues/78)
 
-Store control-plane state (projects, graph IR versions, node registry, run history, secret references, audit trail) in ZettaDB’s CRDT-replicated JSON store; no separate Postgres control plane is required.
+Store control-plane state (projects, graph IR versions, node registry, run history, secret references, audit trail) in Orama Zetta's CRDT-replicated JSON store; no separate Postgres control plane is required.
 
-Store control-plane state (projects, graph IR versions, node registry, run history, secret references, audit trail) in ZettaDB’s CRDT-replicated JSON store; no separate Postgres control plane is required.
+Store control-plane state (projects, graph IR versions, node registry, run history, secret references, audit trail) in Orama Zetta’s CRDT-replicated JSON store; no separate Postgres control plane is required.
 
 **Realizes / depends on / relates to:** relates to → [`ADR-1`](architecture.md#adr-1) · relates to → [`SCR-7`](ux.md#scr-7)
 
@@ -164,8 +164,8 @@ Store control-plane state (projects, graph IR versions, node registry, run histo
 
 `draft`  ·  `transition_requirement`  ·  issue [#263](https://github.com/oramasearch/zetta/issues/263)
 
-Import the existing Amaro Tauri app's SQLite database into ZettaDB; that's the bulk of migration.
+Import the existing Amaro Tauri app's SQLite database into Orama Zetta; that's the bulk of migration.
 
-Existing users are on the Amaro Tauri desktop, which stores state in a local **SQLite** database. **Transition:** read/import that SQLite data into ZettaDB's store so users carry their projects/state forward. Because the new desktop is a native ZettaDB node, migration is primarily a one-time data import, not a re-setup. Relates to ADR-14.
+Existing users are on the Amaro Tauri desktop, which stores state in a local **SQLite** database. **Transition:** read/import that SQLite data into Orama Zetta's store so users carry their projects/state forward. Because the new desktop is a native Orama Zetta node, migration is primarily a one-time data import, not a re-setup. Relates to ADR-14.
 
 **Referenced by:** [`ADR-14`](architecture.md#adr-14) relates to · [`JRN-4`](ux.md#jrn-4) relates to · [`TC-7`](testing.md#tc-7) verifies

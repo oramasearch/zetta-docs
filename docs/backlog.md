@@ -16,7 +16,7 @@ Capture NL intent and import artifacts (R1: n8n JSON) into a project with proven
 Two input kinds: natural language ('score every active account for churn risk and tell me why') and artifacts the team already has — R1 first artifact type is n8n workflow JSON (Charles's churn workflows are the ground-truth fixture); SQL/notebook/schema planned. Stores raw inputs with provenance for re-compilation.
 
 **Realizes / depends on / relates to:** realizes → [`FR-1`](requirements.md#fr-1) · realizes → [`FR-2`](requirements.md#fr-2)
-**Referenced by:** [`ENT-2`](domain-model.md#ent-2) realizes · [`REL-1`](delivery.md#rel-1) contains · [`SCR-2`](ux.md#scr-2) realizes · [`UC-5`](backlog.md#uc-5) relates to · [`US-1`](backlog.md#us-1) refines
+**Referenced by:** [`ENT-2`](domain-model.md#ent-2) realizes · [`REL-1`](delivery.md#rel-1) contains · [`SCR-2`](ux.md#scr-2) realizes · [`UC-5`](backlog.md#uc-5) relates to · [`US-1`](backlog.md#us-1) refines · [`UC-1`](backlog.md#uc-1) depends on
 
 ### FEAT-2 — Architect — compile to execution-graph IR  {: #feat-2 }
 
@@ -24,10 +24,10 @@ Two input kinds: natural language ('score every active account for churn risk an
 
 Compile intent/artifacts into an inspectable execution graph (connect→clean→model→index→serve→act).
 
-The compiler emits a professionally-architected execution graph as the intermediate representation, laid out as a senior data+AI engineer would. The graph is visible and editable, not a black box. IR choice (reuse 'orly' vs. ZettaDB-native) is an open decision.
+The compiler emits a professionally-architected execution graph as the intermediate representation, laid out as a senior data+AI engineer would. The graph is visible and editable, not a black box. IR choice (reuse 'orly' vs. Orama Zetta-native) is an open decision.
 
 **Realizes / depends on / relates to:** realizes → [`FR-3`](requirements.md#fr-3)
-**Referenced by:** [`ADR-10`](architecture.md#adr-10) relates to · [`ADR-2`](architecture.md#adr-2) relates to · [`ARC-5`](architecture.md#arc-5) relates to · [`ENT-3`](domain-model.md#ent-3) realizes · [`GLO-2`](glossary.md#glo-2) relates to · [`REL-1`](delivery.md#rel-1) contains · [`SCR-3`](ux.md#scr-3) realizes · [`TC-4`](testing.md#tc-4) verifies · [`UC-2`](backlog.md#uc-2) relates to · [`US-2`](backlog.md#us-2) refines
+**Referenced by:** [`ADR-10`](architecture.md#adr-10) relates to · [`ADR-2`](architecture.md#adr-2) relates to · [`ARC-5`](architecture.md#arc-5) relates to · [`ENT-3`](domain-model.md#ent-3) realizes · [`GLO-2`](glossary.md#glo-2) relates to · [`REL-1`](delivery.md#rel-1) contains · [`SCR-3`](ux.md#scr-3) realizes · [`TC-4`](testing.md#tc-4) verifies · [`UC-2`](backlog.md#uc-2) relates to · [`US-2`](backlog.md#us-2) refines · [`UC-1`](backlog.md#uc-1) depends on
 
 ### FEAT-3 — Correctness gate — validate before deploy  {: #feat-3 }
 
@@ -38,18 +38,18 @@ Schema/type checks + leakage + point-in-time + a correctness eval; block deploy 
 A generated graph must pass validation before it can deploy: schema type-checks against source profiles; data-leakage + point-in-time checks for ML steps; a correctness eval (compile AND run AND produce the right answer — e.g. entity resolution division-correct). Failures surface a reason, not a stack trace. The line vs. 'n8n with an LLM bolted on.'
 
 **Realizes / depends on / relates to:** realizes → [`FR-4`](requirements.md#fr-4)
-**Referenced by:** [`ADR-3`](architecture.md#adr-3) relates to · [`ENT-5`](domain-model.md#ent-5) realizes · [`GLO-5`](glossary.md#glo-5) relates to · [`REL-2`](delivery.md#rel-2) contains · [`RULE-1`](backlog.md#rule-1) relates to · [`SCR-4`](ux.md#scr-4) realizes · [`TC-1`](testing.md#tc-1) verifies · [`TP-1`](testing.md#tp-1) verifies · [`US-3`](backlog.md#us-3) refines
+**Referenced by:** [`ADR-3`](architecture.md#adr-3) relates to · [`ENT-5`](domain-model.md#ent-5) realizes · [`GLO-5`](glossary.md#glo-5) relates to · [`REL-2`](delivery.md#rel-2) contains · [`RULE-1`](backlog.md#rule-1) relates to · [`SCR-4`](ux.md#scr-4) realizes · [`TC-1`](testing.md#tc-1) verifies · [`TP-1`](testing.md#tp-1) verifies · [`US-3`](backlog.md#us-3) refines · [`UC-1`](backlog.md#uc-1) depends on
 
 ### FEAT-4 — One-button deploy — placement dial  {: #feat-4 }
 
 `draft`  ·  `feature`  ·  issue [#135](https://github.com/oramasearch/zetta/issues/135)
 
-Provision ZettaDB nodes + the graph onto a target (R1 local; k8s/cloud planned); self-heal; no egress.
+Provision Orama Zetta nodes + the graph onto a target (R1 local; k8s/cloud planned); self-heal; no egress.
 
-One action provisions ZettaDB node(s) and the graph onto local → private k8s → AWS/Azure/GCP/on-prem. Control plane reconciles desired→actual and self-heals. Data stays in the customer environment (verifiable — no egress).
+One action provisions Orama Zetta node(s) and the graph onto local → private k8s → AWS/Azure/GCP/on-prem. Control plane reconciles desired→actual and self-heals. Data stays in the customer environment (verifiable — no egress).
 
 **Realizes / depends on / relates to:** realizes → [`FR-5`](requirements.md#fr-5)
-**Referenced by:** [`ADR-15`](architecture.md#adr-15) relates to · [`ADR-7`](architecture.md#adr-7) relates to · [`API-7`](apis.md#api-7) relates to · [`APR-2`](governance.md#apr-2) relates to · [`ARC-1`](architecture.md#arc-1) relates to · [`ENT-6`](domain-model.md#ent-6) realizes · [`REL-3`](delivery.md#rel-3) contains · [`RSK-4`](risks.md#rsk-4) affects · [`RUN-1`](delivery.md#run-1) relates to · [`SCR-5`](ux.md#scr-5) realizes · [`TC-3`](testing.md#tc-3) verifies · [`TP-1`](testing.md#tp-1) verifies · [`US-5`](backlog.md#us-5) refines · [`US-8`](backlog.md#us-8) refines
+**Referenced by:** [`ADR-15`](architecture.md#adr-15) relates to · [`ADR-7`](architecture.md#adr-7) relates to · [`API-7`](apis.md#api-7) relates to · [`APR-2`](governance.md#apr-2) relates to · [`ARC-1`](architecture.md#arc-1) relates to · [`ENT-6`](domain-model.md#ent-6) realizes · [`REL-3`](delivery.md#rel-3) contains · [`RSK-4`](risks.md#rsk-4) affects · [`RUN-1`](delivery.md#run-1) relates to · [`SCR-5`](ux.md#scr-5) realizes · [`TC-3`](testing.md#tc-3) verifies · [`TP-1`](testing.md#tp-1) verifies · [`US-5`](backlog.md#us-5) refines · [`US-8`](backlog.md#us-8) refines · [`UC-1`](backlog.md#uc-1) depends on
 
 ### FEAT-5 — Run + monitor + lineage  {: #feat-5 }
 
@@ -60,7 +60,7 @@ Execute workflows, build indexes, stream results with lineage/freshness/confiden
 Workflows execute and indexes build on the nodes; results stream back with lineage (sources, steps, freshness, confidence). Run status, logs, and produced artifacts (datasets/models/indexes) are observable and diagnosable.
 
 **Realizes / depends on / relates to:** realizes → [`FR-6`](requirements.md#fr-6)
-**Referenced by:** [`ENT-12`](domain-model.md#ent-12) realizes · [`SCR-6`](ux.md#scr-6) realizes · [`US-4`](backlog.md#us-4) refines
+**Referenced by:** [`ENT-12`](domain-model.md#ent-12) realizes · [`SCR-6`](ux.md#scr-6) realizes · [`US-4`](backlog.md#us-4) refines · [`UC-1`](backlog.md#uc-1) depends on
 
 ### FEAT-6 — Learns from your data  {: #feat-6 }
 
@@ -71,7 +71,7 @@ Train a model on the customer's data (not inference over a rented model) — rea
 The differentiator: it trains a model on the customer's data (e.g. XGBoost + SHAP) rather than prompting a rented frontier model — yielding real predictive power and the drivers, and compounding the more it sees. 'Unless you're training a model, you're not learning from your data.' A grounded experience loop improves graph generation over time.
 
 **Realizes / depends on / relates to:** relates to → [`BR-1`](requirements.md#br-1)
-**Referenced by:** [`ADR-17`](architecture.md#adr-17) relates to · [`ADR-20`](architecture.md#adr-20) relates to · [`ARC-6`](architecture.md#arc-6) relates to · [`ENT-14`](domain-model.md#ent-14) realizes · [`RSK-2`](risks.md#rsk-2) affects · [`RSK-8`](risks.md#rsk-8) affects · [`RSK-9`](risks.md#rsk-9) affects · [`TP-1`](testing.md#tp-1) verifies · [`UC-1`](backlog.md#uc-1) relates to
+**Referenced by:** [`ADR-17`](architecture.md#adr-17) relates to · [`ADR-20`](architecture.md#adr-20) relates to · [`ARC-6`](architecture.md#arc-6) relates to · [`ENT-14`](domain-model.md#ent-14) realizes · [`RSK-2`](risks.md#rsk-2) affects · [`RSK-8`](risks.md#rsk-8) affects · [`RSK-9`](risks.md#rsk-9) affects · [`TP-1`](testing.md#tp-1) verifies · [`UC-1`](backlog.md#uc-1) relates to · [`ADR-23`](architecture.md#adr-23) relates to · [`UC-1`](backlog.md#uc-1) depends on
 
 ### FEAT-7 — Tiered storage  {: #feat-7 }
 
@@ -79,7 +79,7 @@ The differentiator: it trains a model on the customer's data (e.g. XGBoost + SHA
 
 Pull source data into in-memory indexes → cold storage → re-warm on request.
 
-Pull expensive source data (Snowflake first) into cheap in-memory indexes, age to cold storage, re-warm on demand; serve queries from the local materialized copy with visible freshness/lag. The cost + locality story. (ZettaDB engine work — planned.)
+Pull expensive source data (Snowflake first) into cheap in-memory indexes, age to cold storage, re-warm on demand; serve queries from the local materialized copy with visible freshness/lag. The cost + locality story. (Orama Zetta engine work — planned.)
 
 **Realizes / depends on / relates to:** relates to → [`NFR-1`](requirements.md#nfr-1)
 **Referenced by:** [`ADR-5`](architecture.md#adr-5) relates to · [`ENT-18`](domain-model.md#ent-18) realizes · [`GLO-4`](glossary.md#glo-4) relates to · [`REL-4`](delivery.md#rel-4) contains · [`RSK-1`](risks.md#rsk-1) affects · [`RSK-6`](risks.md#rsk-6) relates to
@@ -90,7 +90,7 @@ Pull expensive source data (Snowflake first) into cheap in-memory indexes, age t
 
 Run user/agent code on the node where the data lives (embedded Lua / DataFrame API).
 
-Embedded Lua / a DataFrame (DDF) API so user- or agent-generated cleaning/featurize/scoring code runs on the node holding the data — no warehouse round-trip, no exfiltration; sandboxed within the node's access scope. (ZettaDB engine work — planned.)
+Embedded Lua / a DataFrame (DDF) API so user- or agent-generated cleaning/featurize/scoring code runs on the node holding the data — no warehouse round-trip, no exfiltration; sandboxed within the node's access scope. (Orama Zetta engine work — planned.)
 
 **Realizes / depends on / relates to:** relates to → [`NFR-1`](requirements.md#nfr-1)
 **Referenced by:** [`ADR-11`](architecture.md#adr-11) relates to · [`ADR-17`](architecture.md#adr-17) relates to · [`ADR-4`](architecture.md#adr-4) relates to · [`ENT-10`](domain-model.md#ent-10) realizes · [`GLO-3`](glossary.md#glo-3) relates to · [`REL-5`](delivery.md#rel-5) contains · [`RSK-1`](risks.md#rsk-1) affects · [`RSK-7`](risks.md#rsk-7) affects · [`US-7`](backlog.md#us-7) refines
@@ -104,7 +104,7 @@ Identity-scoped access (Okta/OAuth), audit trail, approval gates; V1 key-scoped.
 Runs in the customer environment; access scoped to identity (a tailored view per user, not a service account); complete audit trail of every graph change/deploy/data access; approval gates for risky actions. V1 starts key-scoped (inherit the login key's access); team/partner/per-dataset tiers layer on later.
 
 **Realizes / depends on / relates to:** realizes → [`FR-7`](requirements.md#fr-7)
-**Referenced by:** [`ADR-12`](architecture.md#adr-12) relates to · [`ADR-6`](architecture.md#adr-6) relates to · [`CTL-5`](security.md#ctl-5) relates to · [`ENT-22`](domain-model.md#ent-22) realizes · [`JRN-3`](ux.md#jrn-3) relates to · [`REL-6`](delivery.md#rel-6) contains · [`SCR-7`](ux.md#scr-7) realizes · [`TP-1`](testing.md#tp-1) verifies · [`UC-3`](backlog.md#uc-3) relates to · [`US-6`](backlog.md#us-6) refines · [`US-9`](backlog.md#us-9) refines
+**Referenced by:** [`ADR-12`](architecture.md#adr-12) relates to · [`ADR-6`](architecture.md#adr-6) relates to · [`CTL-5`](security.md#ctl-5) relates to · [`ENT-22`](domain-model.md#ent-22) realizes · [`JRN-3`](ux.md#jrn-3) relates to · [`REL-6`](delivery.md#rel-6) contains · [`SCR-7`](ux.md#scr-7) realizes · [`TP-1`](testing.md#tp-1) verifies · [`UC-3`](backlog.md#uc-3) relates to · [`US-6`](backlog.md#us-6) refines · [`US-9`](backlog.md#us-9) refines · [`UC-1`](backlog.md#uc-1) depends on
 
 ### FEAT-10 — GUI control plane surface  {: #feat-10 }
 
@@ -112,7 +112,7 @@ Runs in the customer environment; access scoped to identity (a tailored view per
 
 One app: artifact import → NL canvas → graph visualizer → deploy picker → execution monitor.
 
-The product surface that makes the loop usable without a CLI. Open decision: extend ZettaDB's SDL3/ImGui headed mode vs. a new Tauri/web shell. The velocity is only felt through the GUI.
+The product surface that makes the loop usable without a CLI. Open decision: extend Orama Zetta's SDL3/ImGui headed mode vs. a new Tauri/web shell. The velocity is only felt through the GUI.
 
 **Referenced by:** [`ADR-14`](architecture.md#adr-14) relates to · [`API-8`](apis.md#api-8) relates to · [`JRN-1`](ux.md#jrn-1) relates to · [`REL-7`](delivery.md#rel-7) contains
 
@@ -152,9 +152,9 @@ Given an ML step, validation runs leakage + point-in-time checks or blocks with 
 
 `draft`  ·  `user_story`  ·  issue [#272](https://github.com/oramasearch/zetta/issues/272)
 
-As Dana, I run the graph on a local ZettaDB node to see real results before touching cloud infra.
+As Dana, I run the graph on a local Orama Zetta node to see real results before touching cloud infra.
 
-Given a validated graph, when Dana clicks Run, a local ZettaDB node executes it and streams results + lineage; with synthetic data (no real-data access yet) it still produces an inspectable result.
+Given a validated graph, when Dana clicks Run, a local Orama Zetta node executes it and streams results + lineage; with synthetic data (no real-data access yet) it still produces an inspectable result.
 
 **Realizes / depends on / relates to:** refines → [`FEAT-5`](backlog.md#feat-5)
 
@@ -162,9 +162,9 @@ Given a validated graph, when Dana clicks Run, a local ZettaDB node executes it 
 
 `draft`  ·  `user_story`  ·  issue [#273](https://github.com/oramasearch/zetta/issues/273)
 
-As Charles, I deploy ZettaDB nodes + graph into my own cloud without hand-provisioning.
+As Charles, I deploy Orama Zetta nodes + graph into my own cloud without hand-provisioning.
 
-Given a validated graph + a target (k8s/VM), when Charles clicks Deploy, ZettaDB node(s) are provisioned and the graph runs there; a node failure self-heals; on completion, nothing left his environment (verifiable).
+Given a validated graph + a target (k8s/VM), when Charles clicks Deploy, Orama Zetta node(s) are provisioned and the graph runs there; a node failure self-heals; on completion, nothing left his environment (verifiable).
 
 **Realizes / depends on / relates to:** refines → [`FEAT-4`](backlog.md#feat-4)
 
@@ -216,9 +216,18 @@ Given an extension (Lua/Orly + Parquet), when Charles publishes it, then it requ
 
 Import the churn workflows → correct graph with a trained model → deploy in-firewall → devs self-serve.
 
-Primary use case; Charles (PER-1). Exercises ingest/architect/correctness/deploy/learn. See FEAT-6.
+**Primary use case — the Motive churn build (Charles, PER-1).** Import Charles's existing churn workflows (n8n) → architect a correct execution graph → train a real churn model on the data (not LLM inference) → validate (correctness gate) → deploy in-firewall → devs self-serve.
 
-**Realizes / depends on / relates to:** relates to → [`FEAT-6`](backlog.md#feat-6) · relates to → [`PER-1`](personas.md#per-1)
+**The bar:** a customer shows up and has a **working production churn model within ~an hour** — real answers about *where we're losing customers*. Baseline model **XGBoost** (good enough; a bespoke model can follow).
+
+**Bootstrap:** where real data access is gated, **generate synthetic data** (profiler over the schema) to develop + train against, then swap to real data once keys land.
+
+**Exercises the whole loop:** ingest (FEAT-1) → architect (FEAT-2) → correctness gate (FEAT-3) → deploy (FEAT-4) → run + monitor (FEAT-5) → learns from your data (FEAT-6), under **key-scoped access** (RULE-3) and governed self-service (FEAT-9). Correctness anchored by entity-resolution-division-correct (TC-4).
+
+**Use-case-driven:** UC-1 is the **first use case**; its dependency closure drives backlog priority (see ADR-23). Each release is a consumable slice of churn.
+
+**Realizes / depends on / relates to:** relates to → [`FEAT-6`](backlog.md#feat-6) · relates to → [`PER-1`](personas.md#per-1) · depends on → [`FEAT-1`](backlog.md#feat-1) · depends on → [`FEAT-2`](backlog.md#feat-2) · depends on → [`FEAT-3`](backlog.md#feat-3) · depends on → [`FEAT-4`](backlog.md#feat-4) · depends on → [`FEAT-5`](backlog.md#feat-5) · depends on → [`FEAT-6`](backlog.md#feat-6) · depends on → [`FEAT-9`](backlog.md#feat-9) · relates to → [`RULE-3`](backlog.md#rule-3) · relates to → [`TC-4`](testing.md#tc-4)
+**Referenced by:** [`ADR-23`](architecture.md#adr-23) relates to
 
 ### UC-2 — Build + deploy a pipeline from natural language  {: #uc-2 }
 
@@ -291,6 +300,7 @@ A principal operates over exactly the data the login key already permits.
 See ADR-6/PERM-1.
 
 **Realizes / depends on / relates to:** relates to → [`ADR-6`](architecture.md#adr-6)
+**Referenced by:** [`UC-1`](backlog.md#uc-1) relates to
 
 ### RULE-4 — Shared/enterprise extensions require approval  {: #rule-4 }
 

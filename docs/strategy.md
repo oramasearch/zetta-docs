@@ -15,7 +15,7 @@ Anyone can turn a question into deployed, running, correct intelligence — in t
 
 **Orama Zetta — Intelligence Velocity for Big Thinkers.** Today, getting from a question ('what's driving churn?') to a correct, governed, production system that answers it takes the scarce few who can do data engineering, ML engineering, and platform engineering at once — everyone else waits in their queue. Orama Zetta puts those three in a bottle: describe the problem in plain language (or hand over an artifact you already have), and get back a correct, professionally-architected execution graph, deployed on infrastructure you control, running and learning — with enterprise guardrails. The bottleneck stops being people; it becomes the speed of thought. *Zetta = zettabyte (one billion terabytes): design for the ceiling, so any scale is free headroom.*
 
-**Referenced by:** [`BL-1`](delivery.md#bl-1) relates to · [`GLO-1`](glossary.md#glo-1) relates to · [`GOAL-1`](strategy.md#goal-1) refines · [`GOAL-2`](strategy.md#goal-2) refines · [`GOAL-3`](strategy.md#goal-3) refines · [`GOAL-4`](strategy.md#goal-4) refines
+**Referenced by:** [`BL-1`](delivery.md#bl-1) relates to · [`GLO-1`](glossary.md#glo-1) relates to · [`GOAL-1`](strategy.md#goal-1) refines · [`GOAL-2`](strategy.md#goal-2) refines · [`GOAL-3`](strategy.md#goal-3) refines · [`GOAL-4`](strategy.md#goal-4) refines · [`ADR-21`](architecture.md#adr-21) relates to · [`ADR-22`](architecture.md#adr-22) relates to · [`ADR-24`](architecture.md#adr-24) relates to
 
 ## Goals
 
@@ -108,13 +108,13 @@ Guardrail metric that must not regress while chasing velocity: governance violat
 
 ## Assumptions
 
-### ASM-1 — ZettaDB substrate will be built  {: #asm-1 }
+### ASM-1 — Orama Zetta substrate will be built  {: #asm-1 }
 
 `draft`  ·  `assumption`  ·  issue [#40](https://github.com/oramasearch/zetta/issues/40)
 
-Tiered storage, compute-near-data, and indexing land on ZettaDB's roadmap.
+Tiered storage, compute-near-data, and indexing land on Orama Zetta's roadmap.
 
-The product's deepest value depends on ZettaDB capabilities that are currently unbuilt (DDF API, embedded Lua, tiered storage, indexing, cloud deploy, auth). Assumes these are co-sequenced and delivered; R1 is scoped to run on what exists today.
+The product's deepest value depends on Orama Zetta capabilities that are currently unbuilt (DDF API, embedded Lua, tiered storage, indexing, cloud deploy, auth). Assumes these are co-sequenced and delivered; R1 is scoped to run on what exists today.
 
 ### ASM-2 — Customers want in-firewall deployment  {: #asm-2 }
 
@@ -138,7 +138,7 @@ Assumes the first enterprise deal is the hard one and each subsequent one is an 
 
 `draft`  ·  `scope_item`  ·  issue [#216](https://github.com/oramasearch/zetta/issues/216)
 
-Ingest → architect → deploy → run → monitor, driving today's ZettaDB.
+Ingest → architect → deploy → run → monitor, driving today's Orama Zetta.
 
 IN SCOPE. The desktop GUI is the near-term focus.
 
@@ -150,7 +150,7 @@ Start with n8n JSON; SQL/notebook/schema planned.
 
 IN SCOPE. Charles's n8n workflows are the ground-truth first artifact type.
 
-### SCP-3 — In: one-button deploy of ZettaDB nodes + governance  {: #scp-3 }
+### SCP-3 — In: one-button deploy of Orama Zetta nodes + governance  {: #scp-3 }
 
 `draft`  ·  `scope_item`  ·  issue [#218](https://github.com/oramasearch/zetta/issues/218)
 
@@ -180,4 +180,4 @@ OUT OF SCOPE for now.
 
 Borrow ideas (IR, placement dial, controller→k8s), don't inherit the stack.
 
-OUT OF SCOPE. orama-platform-1 is prior art only; ZettaDB supersedes its Postgres-spine decision.
+OUT OF SCOPE. orama-platform-1 is prior art only; Orama Zetta supersedes its Postgres-spine decision.

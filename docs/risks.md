@@ -7,13 +7,13 @@ Gating risks and the decisions/controls that mitigate them.
 
 ## Risks
 
-### RSK-1 — ZettaDB maturity is the gating risk  {: #rsk-1 }
+### RSK-1 — Orama Zetta maturity is the gating risk  {: #rsk-1 }
 
 `draft`  ·  `risk`  ·  issue [#200](https://github.com/oramasearch/zetta/issues/200)
 
 DDF API, embedded Lua, tiered storage, indexing, cloud deploy, auth are all unbuilt.
 
-Verified against the code: ZettaDB today is a CRDT-replicated JSON store + equal-peer cluster + Postgres-SQL subset. Most of the substrate this product promises does not exist yet. **Mitigation:** R1 runs on what exists; co-own the ZettaDB roadmap; sequence the engine bets explicitly.
+Verified against the code: Orama Zetta today is a CRDT-replicated JSON store + equal-peer cluster + Postgres-SQL subset. Most of the substrate this product promises does not exist yet. **Mitigation:** R1 runs on what exists; co-own the Orama Zetta roadmap; sequence the engine bets explicitly.
 
 **Realizes / depends on / relates to:** affects → [`FEAT-7`](backlog.md#feat-7) · affects → [`FEAT-8`](backlog.md#feat-8)
 **Referenced by:** [`ADR-8`](architecture.md#adr-8) mitigates · [`STK-3`](personas.md#stk-3) relates to
@@ -33,9 +33,9 @@ Guaranteeing a generated graph is 'robust, correct, professionally architected' 
 
 `draft`  ·  `risk`  ·  issue [#202](https://github.com/oramasearch/zetta/issues/202)
 
-ZettaDB lacks transactions + leader election; trusting it with registry/locks/cursors is unproven.
+Orama Zetta lacks transactions + leader election; trusting it with registry/locks/cursors is unproven.
 
-Storing control-plane state (registry, run cursors, locks) in ZettaDB's CRDT store is unproven until leadership-by-lease lands. **Mitigation:** validate the CRDT store for control-plane use in R1 on low-contention state; gate locks/cursors on the planned leadership feature.
+Storing control-plane state (registry, run cursors, locks) in Orama Zetta's CRDT store is unproven until leadership-by-lease lands. **Mitigation:** validate the CRDT store for control-plane use in R1 on low-contention state; gate locks/cursors on the planned leadership feature.
 
 **Realizes / depends on / relates to:** relates to → [`ADR-1`](architecture.md#adr-1)
 

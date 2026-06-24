@@ -7,7 +7,7 @@ The native cluster API, DDF, Runner, Cloud Interface, MCP, and CLI surfaces.
 
 ## Interfaces
 
-### API-1 — ZettaDB native cluster API (C++)  {: #api-1 }
+### API-1 — Orama Zetta native cluster API (C++)  {: #api-1 }
 
 `draft`  ·  `interface`  ·  issue [#21](https://github.com/oramasearch/zetta/issues/21)
 

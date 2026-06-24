@@ -37,7 +37,7 @@ All data, compute, and state live inside the customer's network/cloud. Outbound 
 
 Between untrusted extension/runner code and the node's data + API.
 
-Lua/Orly (later Python) extension code is untrusted; it may only reach the ZettaDB API/data via capability tokens. The sandbox is the boundary between arbitrary code and the node. Backs ADR-12.
+Lua/Orly (later Python) extension code is untrusted; it may only reach the Orama Zetta API/data via capability tokens. The sandbox is the boundary between arbitrary code and the node. Backs ADR-12.
 
 **Realizes / depends on / relates to:** relates to → [`ADR-12`](architecture.md#adr-12)
 **Referenced by:** [`TM-1`](security.md#tm-1) contains

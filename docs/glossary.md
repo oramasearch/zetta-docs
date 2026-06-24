@@ -33,7 +33,7 @@ The inspectable, versioned intermediate representation Orama Zetta compiles inte
 
 Running code on the node where the data lives.
 
-Embedded Lua / DataFrame execution on the ZettaDB node holding the data — no warehouse round-trip, no exfiltration.
+Embedded Lua / DataFrame execution on the Orama Zetta node holding the data — no warehouse round-trip, no exfiltration.
 
 **Realizes / depends on / relates to:** relates to → [`FEAT-8`](backlog.md#feat-8)
 
@@ -43,7 +43,7 @@ Embedded Lua / DataFrame execution on the ZettaDB node holding the data — no w
 
 Source → in-memory index → cold storage → re-warm on request.
 
-ZettaDB's storage tiering that materializes expensive source data into cheap fast indexes and ages it out, re-warming on demand.
+Orama Zetta's storage tiering that materializes expensive source data into cheap fast indexes and ages it out, re-warming on demand.
 
 **Realizes / depends on / relates to:** relates to → [`FEAT-7`](backlog.md#feat-7)
 
@@ -63,7 +63,7 @@ Schema/type checks, data-leakage + point-in-time checks for ML steps, and a corr
 
 Orama's first-party DSL — a Lua alternative for the code-form IR and extensions.
 
-A higher-level, inspectable plan language tailored to ZettaDB orchestration; a concrete Runner alongside Lua. See ADR-13.
+A higher-level, inspectable plan language tailored to Orama Zetta orchestration; a concrete Runner alongside Lua. See ADR-13.
 
 **Realizes / depends on / relates to:** relates to → [`ADR-13`](architecture.md#adr-13)
 
@@ -111,7 +111,7 @@ The unit of authority in the extension sandbox; no ambient access, every use aud
 
 `draft`  ·  `glossary_term`  ·  issue [#159](https://github.com/oramasearch/zetta/issues/159)
 
-ZettaDB's rich, cluster-parallel dataframe API — native C++ operations over data spread across nodes.
+Orama Zetta's rich, cluster-parallel dataframe API — native C++ operations over data spread across nodes.
 
 The dataframe abstraction the runners and graph steps operate on; operations are re-implemented natively and parallelized across the cluster. The 'data engineering' substrate. See ADR-17.
 

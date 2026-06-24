@@ -7,11 +7,11 @@ The control-plane store, its tables, and retention rules.
 
 ## Data Stores
 
-### DS-1 — Control-plane store (ZettaDB CRDT)  {: #ds-1 }
+### DS-1 — Control-plane store (Orama Zetta CRDT)  {: #ds-1 }
 
 `draft`  ·  `data_store`  ·  issue [#79](https://github.com/oramasearch/zetta/issues/79)
 
-ZettaDB's CRDT-replicated store holding all platform control-plane state.
+Orama Zetta's CRDT-replicated store holding all platform control-plane state.
 
 Projects, execution graphs + versions, validation reports, runs + outputs, node registry, capability grants, audit events, source-connection refs, deployment targets. No separate Postgres. See ADR-1/DR-1.
 
@@ -21,7 +21,7 @@ Projects, execution graphs + versions, validation reports, runs + outputs, node 
 
 `draft`  ·  `data_store`  ·  issue [#80](https://github.com/oramasearch/zetta/issues/80)
 
-ZettaDB large objects for models, indexes, tabular-IR files, and uploaded artifacts.
+Orama Zetta large objects for models, indexes, tabular-IR files, and uploaded artifacts.
 
 Holds trained models, built indexes, Parquet/CSV/Automerge graph files, and imported artifacts (n8n JSON). Peer-to-peer transfer with SHA-256 verification.
 

@@ -120,7 +120,7 @@ Sam (P3). Scoped to identity; trust surfaced (sources/freshness/confidence). See
 
 `draft`  ·  `journey`  ·  issue [#170](https://github.com/oramasearch/zetta/issues/170)
 
-Point at the existing Amaro Tauri SQLite DB → import projects/state into ZettaDB.
+Point at the existing Amaro Tauri SQLite DB → import projects/state into Orama Zetta.
 
 One-time migration journey. See TR-1/ADR-14.
 

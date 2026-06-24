@@ -11,9 +11,9 @@ Releases R1→R8, environments, runbooks, and baselines.
 
 `draft`  ·  `release`  ·  issue [#186](https://github.com/oramasearch/zetta/issues/186)
 
-Import an n8n workflow → correct graph → run on a local ZettaDB node.
+Import an n8n workflow → correct graph → run on a local Orama Zetta node.
 
-Roadmap R1; runs on today's ZettaDB. The Motive build is R1 scoped to one customer. Env: Local.
+Roadmap R1; runs on today's Orama Zetta. The Motive build is R1 scoped to one customer. Env: Local.
 
 **Realizes / depends on / relates to:** contains → [`FEAT-1`](backlog.md#feat-1) · contains → [`FEAT-2`](backlog.md#feat-2)
 **Referenced by:** [`ENV-1`](delivery.md#env-1) relates to
@@ -32,7 +32,7 @@ Roadmap R2. Gates self-service. See FEAT-3.
 
 `draft`  ·  `release`  ·  issue [#188](https://github.com/oramasearch/zetta/issues/188)
 
-Provision a ZettaDB node + graph onto one real target (k8s) and self-heal.
+Provision an Orama Zetta node + graph onto one real target (k8s) and self-heal.
 
 Roadmap R3. Cloud Interface (CLI/HTTP). Env: Customer-k8s.
 
@@ -45,7 +45,7 @@ Roadmap R3. Cloud Interface (CLI/HTTP). Env: Customer-k8s.
 
 Source → in-memory index → cold → re-warm; serve from local materialized copy.
 
-Roadmap R4. ZettaDB engine bet. See ADR-5.
+Roadmap R4. Orama Zetta engine bet. See ADR-5.
 
 **Realizes / depends on / relates to:** contains → [`FEAT-7`](backlog.md#feat-7)
 
@@ -95,7 +95,7 @@ Roadmap R8 (north-star, deferred). See BC-6.
 
 `draft`  ·  `environment`  ·  issue [#110](https://github.com/oramasearch/zetta/issues/110)
 
-The SDL3/ImGui desktop running as a single ZettaDB node.
+The SDL3/ImGui desktop running as a single Orama Zetta node.
 
 R1 target; dev + single-box. Desktop is a cluster node.
 
@@ -105,7 +105,7 @@ R1 target; dev + single-box. Desktop is a cluster node.
 
 `draft`  ·  `environment`  ·  issue [#111](https://github.com/oramasearch/zetta/issues/111)
 
-ZettaDB nodes deployed into the customer's own k8s cluster/account.
+Orama Zetta nodes deployed into the customer's own k8s cluster/account.
 
 R3 target; in-firewall. Provisioned via the Cloud Interface.
 
@@ -115,7 +115,7 @@ R3 target; in-firewall. Provisioned via the Cloud Interface.
 
 `draft`  ·  `environment`  ·  issue [#112](https://github.com/oramasearch/zetta/issues/112)
 
-ZettaDB on a customer-controlled VM / on-prem host.
+Orama Zetta on a customer-controlled VM / on-prem host.
 
 The Motive-style in-firewall case. Data never leaves.
 
@@ -139,15 +139,15 @@ R8; lowest near-term priority (in-firewall first).
 
 ## Runbooks
 
-### RUN-1 — Low-friction node bootstrapping (ZettaDB-native)  {: #run-1 }
+### RUN-1 — Low-friction node bootstrapping (Orama Zetta-native)  {: #run-1 }
 
 `draft`  ·  `runbook`  ·  issue [#215](https://github.com/oramasearch/zetta/issues/215)
 
-Target UX: a declarative node/infra inventory + one orchestrate action; new headless ZettaDB nodes join via enrollment token + mTLS. k0s flow shown as illustrative inspiration only, not the chosen implementation.
+Target UX: a declarative node/infra inventory + one orchestrate action; new headless Orama Zetta nodes join via enrollment token + mTLS. k0s flow shown as illustrative inspiration only, not the chosen implementation.
 
-**Target UX (ZettaDB-native):** a user points the orchestrator node at a target (a declarative node/infra inventory or a cloud account), authenticates, and runs one orchestrate action; the **Cloud Interface** (ADR-15) provisions/identifies the infra and ZettaDB stands up **headless nodes** that **join via an enrollment token + mTLS** (ADR-18). Low friction, on our own primitives.
+**Target UX (Orama Zetta-native):** a user points the orchestrator node at a target (a declarative node/infra inventory or a cloud account), authenticates, and runs one orchestrate action; the **Cloud Interface** (ADR-15) provisions/identifies the infra and Orama Zetta stands up **headless nodes** that **join via an enrollment token + mTLS** (ADR-18). Low friction, on our own primitives.
 
-**Illustrative inspiration only (NOT the chosen implementation):** k0s shows the ergonomics we like — `k0sctl init` → edit a hosts inventory (roles + ssh) → `k0sctl apply` (one converge step) → `k0sctl kubeconfig`; or per-host `k0s install` + `k0s token create` + `k0s install worker --token-file` + `k0s start`; or k0smotron CRDs over the k8s API for an SSH-free path. We borrow the *shape* (declarative inventory, one apply, token join, CLI-vs-API surfaces) — not the tool, not its API. See ADR-19."
+**Illustrative inspiration only (NOT the chosen implementation):** k0s shows the ergonomics we like — `k0sctl init` → edit a hosts inventory (roles + ssh) → `k0sctl apply` (one converge step) → `k0sctl kubeconfig`; or per-host `k0s install` + `k0s token create` + `k0s install worker --token-file` + `k0s start`; or k0smotron CRDs over the k8s API for an SSH-free path. We borrow the *shape* (declarative inventory, one apply, token join, CLI-vs-API surfaces) — not the tool, not its API. See ADR-19.
 
 **Realizes / depends on / relates to:** relates to → [`ADR-19`](architecture.md#adr-19) · relates to → [`FEAT-4`](backlog.md#feat-4)
 

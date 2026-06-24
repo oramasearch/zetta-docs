@@ -23,7 +23,7 @@ Owns turning a user's intent and imported artifacts into a validated, versioned 
 
 Cloud Interface, node bootstrap, burst provisioning, placement.
 
-Owns provisioning target infrastructure and standing up / joining ZettaDB nodes (persistent and ephemeral-burst). Entities: DeploymentTarget, CloudProvider, EnrollmentToken, BurstRequest.
+Owns provisioning target infrastructure and standing up / joining Orama Zetta nodes (persistent and ephemeral-burst). Entities: DeploymentTarget, CloudProvider, EnrollmentToken, BurstRequest.
 
 **Realizes / depends on / relates to:** contains → [`ENT-6`](domain-model.md#ent-6) · contains → [`ENT-7`](domain-model.md#ent-7) · contains → [`ENT-8`](domain-model.md#ent-8) · contains → [`ENT-9`](domain-model.md#ent-9)
 
@@ -43,7 +43,7 @@ Owns executing graphs/extensions in the sandbox and running cluster-parallel nat
 
 Tiered storage, indexes, materialization, large objects, control-plane store.
 
-Owns source ingestion, materialization, tiering (hot→cold→re-warm), indexing, and the ZettaDB control-plane/large-object stores. Entities: SourceConnection, MaterializedView, StorageTier.
+Owns source ingestion, materialization, tiering (hot→cold→re-warm), indexing, and the Orama Zetta control-plane/large-object stores. Entities: SourceConnection, MaterializedView, StorageTier.
 
 **Realizes / depends on / relates to:** contains → [`ENT-17`](domain-model.md#ent-17) · contains → [`ENT-18`](domain-model.md#ent-18) · contains → [`ENT-19`](domain-model.md#ent-19)
 
@@ -415,7 +415,7 @@ Orchestration. Emits InfrastructureProvisioned. See ADR-15.
 
 `draft`  ·  `domain_command`  ·  issue [#56](https://github.com/oramasearch/zetta/issues/56)
 
-Deploy a validated graph + ZettaDB nodes onto a target.
+Deploy a validated graph + Orama Zetta nodes onto a target.
 
 Orchestration. Emits GraphDeployed; self-heals. See FEAT-4.
 
@@ -567,7 +567,7 @@ Orchestration.
 
 `draft`  ·  `domain_event`  ·  issue [#119](https://github.com/oramasearch/zetta/issues/119)
 
-A ZettaDB node joined the cluster (enrollment token + mTLS).
+An Orama Zetta node joined the cluster (enrollment token + mTLS).
 
 Orchestration + Governance. See ADR-18.
 

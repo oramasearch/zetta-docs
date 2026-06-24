@@ -61,7 +61,7 @@ The churn query resolves to the right division, never an averaged aggregate.
 The canonical correctness case. Verifies FEAT-3/FEAT-2.
 
 **Realizes / depends on / relates to:** verifies → [`FEAT-2`](backlog.md#feat-2)
-**Referenced by:** [`TP-1`](testing.md#tp-1) contains
+**Referenced by:** [`TP-1`](testing.md#tp-1) contains · [`UC-1`](backlog.md#uc-1) relates to
 
 ### TC-5 — Sandbox escape / over-scope denied  {: #tc-5 }
 
@@ -89,7 +89,7 @@ Verifies ADR-20/ADR-18/RSK-9.
 
 `draft`  ·  `test_case`  ·  issue [#254](https://github.com/oramasearch/zetta/issues/254)
 
-Importing the Amaro Tauri SQLite DB reproduces projects/state in ZettaDB without loss.
+Importing the Amaro Tauri SQLite DB reproduces projects/state in Orama Zetta without loss.
 
 Verifies TR-1/ADR-14.
 
