@@ -145,6 +145,7 @@ def keysort(a):
 
 # ── Pre-load existing issues (one read): number, title, AND body ────────────
 body_now = {}   # key -> body currently live on GitHub
+title_now = {}  # key -> title currently live on GitHub
 p = gh(["issue", "list", "--repo", REPO, "--state", "all", "--limit", "1000",
         "--json", "number,title,body"])
 for it in json.loads(p.stdout or "[]"):
@@ -153,6 +154,7 @@ for it in json.loads(p.stdout or "[]"):
         key = t[1:t.index("]")]
         issue_map.setdefault(key, it["number"])
         body_now[key] = it.get("body") or ""
+        title_now[key] = t
 save_map()
 
 ordered = sorted(arts, key=keysort)
@@ -205,7 +207,8 @@ for a in ordered:
     if k not in issue_map:
         continue  # never created (error in A) — skip
     want = render_body(a)
-    if want.strip() == (body_now.get(k, "") or "").strip():
+    want_title = f'[{k}] {a["title"]}'
+    if want.strip() == (body_now.get(k, "") or "").strip() and want_title == title_now.get(k):
         unchanged += 1
         continue
     if DRY:
@@ -214,9 +217,10 @@ for a in ordered:
         continue
     ok = False
     for attempt in range(6):
-        r = gh(["issue", "edit", str(issue_map[k]), "--repo", REPO, "--body-file", "-"], stdin=want)
+        r = gh(["issue", "edit", str(issue_map[k]), "--repo", REPO, "--title", want_title, "--body-file", "-"], stdin=want)
         if r.returncode == 0:
             body_now[k] = want
+            title_now[k] = want_title
             edited += 1
             ok = True
             print(f"edit {k} -> #{issue_map[k]}", flush=True)
