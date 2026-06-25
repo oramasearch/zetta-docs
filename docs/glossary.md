@@ -137,3 +137,13 @@ Provision-many → run-parallel → tear-down for temporary workloads (training,
 A provisioning mode distinct from persistent cluster nodes: spin up N ephemeral nodes at once (often on Spot/low-priority capacity for cost), run a cluster-parallel job, then release them. See ADR-20.
 
 **Realizes / depends on / relates to:** relates to → [`ADR-20`](architecture.md#adr-20)
+
+### GLO-14 — AI project  {: #glo-14 }
+
+`draft`  ·  `glossary_term`
+
+The central artifact: a data/AI project instantiated from a use-case type on a team's data, composed of optional components, managed to success.
+
+The **central item** of Orama Zetta. A user creates an **AI/data project** from a **use-case type** (e.g. churn) and points it at their own data; it owns its execution graph, **optional components** (steps the user toggles), runs, and provenance, and is **managed through its lifecycle to success**. See ENT-1 `Project` and the data-project-management ADR.
+
+**Realizes / depends on / relates to:** relates to → [`ENT-1`](domain-model.md#ent-1)

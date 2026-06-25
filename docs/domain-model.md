@@ -74,11 +74,11 @@ Owns recording grounded run outcomes, scoring them, and refining the graph-gener
 
 `draft`  ·  `domain_entity`  ·  issue [#82](https://github.com/oramasearch/zetta/issues/82)
 
-A unit of work: intent + imported artifacts + its execution graphs + runs.
+The AI/data project — the central, user-managed artifact: instantiated from a use-case type on a team's data; owns its execution graph(s), optional components, runs, and provenance.
 
-Authoring context. Created from NL intent and/or imported artifacts; owns provenance, graph versions, and run history. Persisted in the control-plane store.
+Authoring context. The **central item** of Orama Zetta: an **AI/data project** a user creates and manages. Instantiated from a **use-case type** (e.g. churn) on the team's own data; composed of **optional components** (graph steps the user toggles); owns its execution-graph versions, runs, and provenance. Persisted in the control-plane store. Managed through its lifecycle to success (ADR-25, data-project management).
 
-**Referenced by:** [`BC-1`](domain-model.md#bc-1) contains · [`CMD-1`](domain-model.md#cmd-1) relates to
+**Referenced by:** [`BC-1`](domain-model.md#bc-1) contains · [`CMD-1`](domain-model.md#cmd-1) relates to · [`ADR-25`](architecture.md#adr-25) relates to · [`GLO-14`](glossary.md#glo-14) relates to
 
 ### ENT-2 — ImportedArtifact  {: #ent-2 }
 

@@ -15,7 +15,7 @@ Anyone can turn a question into deployed, running, correct intelligence — in t
 
 **Orama Zetta — Intelligence Velocity for Big Thinkers.** Today, getting from a question ('what's driving churn?') to a correct, governed, production system that answers it takes the scarce few who can do data engineering, ML engineering, and platform engineering at once — everyone else waits in their queue. Orama Zetta puts those three in a bottle: describe the problem in plain language (or hand over an artifact you already have), and get back a correct, professionally-architected execution graph, deployed on infrastructure you control, running and learning — with enterprise guardrails. The bottleneck stops being people; it becomes the speed of thought. *Zetta = zettabyte (one billion terabytes): design for the ceiling, so any scale is free headroom.*
 
-**Referenced by:** [`BL-1`](delivery.md#bl-1) relates to · [`GLO-1`](glossary.md#glo-1) relates to · [`GOAL-1`](strategy.md#goal-1) refines · [`GOAL-2`](strategy.md#goal-2) refines · [`GOAL-3`](strategy.md#goal-3) refines · [`GOAL-4`](strategy.md#goal-4) refines · [`ADR-21`](architecture.md#adr-21) relates to · [`ADR-22`](architecture.md#adr-22) relates to · [`ADR-24`](architecture.md#adr-24) relates to
+**Referenced by:** [`BL-1`](delivery.md#bl-1) relates to · [`GLO-1`](glossary.md#glo-1) relates to · [`GOAL-1`](strategy.md#goal-1) refines · [`GOAL-2`](strategy.md#goal-2) refines · [`GOAL-3`](strategy.md#goal-3) refines · [`GOAL-4`](strategy.md#goal-4) refines · [`ADR-21`](architecture.md#adr-21) relates to · [`ADR-22`](architecture.md#adr-22) relates to · [`ADR-24`](architecture.md#adr-24) relates to · [`ADR-25`](architecture.md#adr-25) relates to
 
 ## Goals
 

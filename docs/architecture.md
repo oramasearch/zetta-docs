@@ -304,6 +304,43 @@ Treat every tracking issue as a **request to produce an artifact** — software 
 
 **Realizes / depends on / relates to:** relates to → [`VIS-1`](strategy.md#vis-1)
 
+### ADR-25 — AI projects are the central item; data-project management is the job  {: #adr-25 }
+
+`draft`  ·  `adr`
+
+The central artifact is the AI/data project; Orama Zetta's job is managing AI projects to success (most AI projects fail).
+
+## Context
+Most AI/data projects fail — they start backward (tech or data first, no defined problem), bolt stochastic models onto messy foundations, overpromise, and never reach production (Andrew Ng).
+
+## Decision
+The **central item is the AI/data project** (ENT-1 `Project`) — the unit a user creates, manages, and ships. Orama Zetta's real job is **data-project management**: the discipline that makes a project *succeed* — problem → right data → correct-by-construction model → governed deploy → monitor + iterate. A project is **user-managed** and composed of **optional components** the user controls.
+
+## Consequences
+- Vision, use cases, and UX are organized around creating + managing AI projects to success — not one-shot answers.
+- The correctness gate (ADR-3 / FEAT-3), the lifecycle, and governance are the *management* discipline.
+- Each use case (e.g. churn) instantiates as a Project.
+
+**Realizes / depends on / relates to:** relates to → [`VIS-1`](strategy.md#vis-1) · relates to → [`ENT-1`](domain-model.md#ent-1)
+
+### ADR-26 — Use cases are generic AI-project types; the engine is general AI  {: #adr-26 }
+
+`draft`  ·  `adr`
+
+A use case (e.g. churn) is a generic AI-project type any team runs on its own data; the engine trains/serves any model type, not one method.
+
+## Context
+Balance real AI intelligence (a model *trained on the data*) with being generic + reusable across teams. We are not a single-method tool.
+
+## Decision
+A **use case is a generic AI-project type** — the same template instantiates on any team's data (not a bespoke per-customer build). The **engine is general AI**: it featurizes + trains + serves **any** model type — XGBoost, RL, LLM fine-tuning — not one method. **Churn via featurize → XGBoost → SHAP is the first use case**; its optional components (recommended-action layer, LLM playbook) are user-managed. Keep use cases **simple, generic, reusable** — even a basic model is useful to most orgs.
+
+## Consequences
+- Build use cases as generic project templates with optional components, not bespoke pipelines.
+- The catalog of use cases grows; the engine carries forward to the next one.
+
+**Realizes / depends on / relates to:** relates to → [`UC-1`](backlog.md#uc-1) · relates to → [`FEAT-6`](backlog.md#feat-6)
+
 ## Architecture Elements
 
 ### ARC-1 — Coordinator / Orchestrator node  {: #arc-1 }

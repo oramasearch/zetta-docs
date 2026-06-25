@@ -71,7 +71,7 @@ Train a model on the customer's data (not inference over a rented model) — rea
 The differentiator: it trains a model on the customer's data (e.g. XGBoost + SHAP) rather than prompting a rented frontier model — yielding real predictive power and the drivers, and compounding the more it sees. 'Unless you're training a model, you're not learning from your data.' A grounded experience loop improves graph generation over time.
 
 **Realizes / depends on / relates to:** relates to → [`BR-1`](requirements.md#br-1)
-**Referenced by:** [`ADR-17`](architecture.md#adr-17) relates to · [`ADR-20`](architecture.md#adr-20) relates to · [`ARC-6`](architecture.md#arc-6) relates to · [`ENT-14`](domain-model.md#ent-14) realizes · [`RSK-2`](risks.md#rsk-2) affects · [`RSK-8`](risks.md#rsk-8) affects · [`RSK-9`](risks.md#rsk-9) affects · [`TP-1`](testing.md#tp-1) verifies · [`UC-1`](backlog.md#uc-1) relates to · [`ADR-23`](architecture.md#adr-23) relates to · [`UC-1`](backlog.md#uc-1) depends on
+**Referenced by:** [`ADR-17`](architecture.md#adr-17) relates to · [`ADR-20`](architecture.md#adr-20) relates to · [`ARC-6`](architecture.md#arc-6) relates to · [`ENT-14`](domain-model.md#ent-14) realizes · [`RSK-2`](risks.md#rsk-2) affects · [`RSK-8`](risks.md#rsk-8) affects · [`RSK-9`](risks.md#rsk-9) affects · [`TP-1`](testing.md#tp-1) verifies · [`UC-1`](backlog.md#uc-1) relates to · [`ADR-23`](architecture.md#adr-23) relates to · [`UC-1`](backlog.md#uc-1) depends on · [`ADR-26`](architecture.md#adr-26) relates to
 
 ### FEAT-7 — Tiered storage  {: #feat-7 }
 
@@ -210,24 +210,26 @@ Given an extension (Lua/Orly + Parquet), when Charles publishes it, then it requ
 
 ## Use Cases
 
-### UC-1 — Investigate churn (the Motive case)  {: #uc-1 }
+### UC-1 — Churn intelligence (first use case)  {: #uc-1 }
 
 `draft`  ·  `use_case`  ·  issue [#264](https://github.com/oramasearch/zetta/issues/264)
 
-Import the churn workflows → correct graph with a trained model → deploy in-firewall → devs self-serve.
+A generic AI-project type: point it at a team's data → featurize → train (XGBoost) → explain (SHAP) → ranked at-risk + drivers, with optional action/playbook components. Motive is the first instance.
 
-**Primary use case — the Motive churn build (Charles, PER-1).** Import Charles's existing churn workflows (n8n) → architect a correct execution graph → train a real churn model on the data (not LLM inference) → validate (correctness gate) → deploy in-firewall → devs self-serve.
+**The first use case — a generic AI-project type.** Any team instantiates a churn project on *its own* data (define the entity, the churn label + horizon, the as-of date, the features). The pipeline is deliberately **simple, generic, and timeless**:
 
-**The bar:** a customer shows up and has a **working production churn model within ~an hour** — real answers about *where we're losing customers*. Baseline model **XGBoost** (good enough; a bespoke model can follow).
+**featurize (point-in-time) → train (XGBoost) → explain (SHAP) → rank at-risk entities + per-entity drivers.**
 
-**Bootstrap:** where real data access is gated, **generate synthetic data** (profiler over the schema) to develop + train against, then swap to real data once keys land.
+Plus **optional, user-managed components** the project can include or omit:
+- a **recommended-action** layer (driver → action + owner), and
+- an **LLM playbook** narrator (constrained — writes the narrative + picks the play, never invents numbers).
 
-**Exercises the whole loop:** ingest (FEAT-1) → architect (FEAT-2) → correctness gate (FEAT-3) → deploy (FEAT-4) → run + monitor (FEAT-5) → learns from your data (FEAT-6), under **key-scoped access** (RULE-3) and governed self-service (FEAT-9). Correctness anchored by entity-resolution-division-correct (TC-4).
+**Generic, not bespoke:** the same project type serves any org's churn data; **Motive/Charles (PER-1) is the first instance**, not a special build. Even a basic model is useful — keep it simple. **The bar:** point at data → a working, explained churn model within ~an hour, deployed + governed.
 
-**Use-case-driven:** UC-1 is the **first use case**; its dependency closure drives backlog priority (see ADR-23). Each release is a consumable slice of churn.
+Exercises the AI-project lifecycle: ingest (FEAT-1) → featurize + train (FEAT-6, learns from your data) → validate (FEAT-3, correctness) → deploy (FEAT-4) → run + monitor (FEAT-5) → governed self-serve (FEAT-9), under key-scoped access (RULE-3). The deeper agentic-RL extension is **deferred**. Built via a wtm worktree plan over its issues.
 
 **Realizes / depends on / relates to:** relates to → [`FEAT-6`](backlog.md#feat-6) · relates to → [`PER-1`](personas.md#per-1) · depends on → [`FEAT-1`](backlog.md#feat-1) · depends on → [`FEAT-2`](backlog.md#feat-2) · depends on → [`FEAT-3`](backlog.md#feat-3) · depends on → [`FEAT-4`](backlog.md#feat-4) · depends on → [`FEAT-5`](backlog.md#feat-5) · depends on → [`FEAT-6`](backlog.md#feat-6) · depends on → [`FEAT-9`](backlog.md#feat-9) · relates to → [`RULE-3`](backlog.md#rule-3) · relates to → [`TC-4`](testing.md#tc-4)
-**Referenced by:** [`ADR-23`](architecture.md#adr-23) relates to
+**Referenced by:** [`ADR-23`](architecture.md#adr-23) relates to · [`ADR-26`](architecture.md#adr-26) relates to
 
 ### UC-2 — Build + deploy a pipeline from natural language  {: #uc-2 }
 
