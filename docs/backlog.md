@@ -71,7 +71,7 @@ Train a model on the customer's data (not inference over a rented model) — rea
 The differentiator: it trains a model on the customer's data (e.g. XGBoost + SHAP) rather than prompting a rented frontier model — yielding real predictive power and the drivers, and compounding the more it sees. 'Unless you're training a model, you're not learning from your data.' A grounded experience loop improves graph generation over time.
 
 **Realizes / depends on / relates to:** relates to → [`BR-1`](requirements.md#br-1)
-**Referenced by:** [`ADR-17`](architecture.md#adr-17) relates to · [`ADR-20`](architecture.md#adr-20) relates to · [`ARC-6`](architecture.md#arc-6) relates to · [`ENT-14`](domain-model.md#ent-14) realizes · [`RSK-2`](risks.md#rsk-2) affects · [`RSK-8`](risks.md#rsk-8) affects · [`RSK-9`](risks.md#rsk-9) affects · [`TP-1`](testing.md#tp-1) verifies · [`UC-1`](backlog.md#uc-1) relates to · [`ADR-23`](architecture.md#adr-23) relates to · [`UC-1`](backlog.md#uc-1) depends on · [`ADR-26`](architecture.md#adr-26) relates to
+**Referenced by:** [`FEAT-11`](backlog.md#feat-11) relates to · [`FEAT-12`](backlog.md#feat-12) refines · [`ADR-17`](architecture.md#adr-17) relates to · [`ADR-20`](architecture.md#adr-20) relates to · [`ARC-6`](architecture.md#arc-6) relates to · [`ENT-14`](domain-model.md#ent-14) realizes · [`RSK-2`](risks.md#rsk-2) affects · [`RSK-8`](risks.md#rsk-8) affects · [`RSK-9`](risks.md#rsk-9) affects · [`TP-1`](testing.md#tp-1) verifies · [`UC-1`](backlog.md#uc-1) relates to · [`ADR-23`](architecture.md#adr-23) relates to · [`UC-1`](backlog.md#uc-1) depends on · [`ADR-26`](architecture.md#adr-26) relates to
 
 ### FEAT-7 — Tiered storage  {: #feat-7 }
 
@@ -104,7 +104,7 @@ Identity-scoped access (Okta/OAuth), audit trail, approval gates; V1 key-scoped.
 Runs in the customer environment; access scoped to identity (a tailored view per user, not a service account); complete audit trail of every graph change/deploy/data access; approval gates for risky actions. V1 starts key-scoped (inherit the login key's access); team/partner/per-dataset tiers layer on later.
 
 **Realizes / depends on / relates to:** realizes → [`FR-7`](requirements.md#fr-7)
-**Referenced by:** [`ADR-12`](architecture.md#adr-12) relates to · [`ADR-6`](architecture.md#adr-6) relates to · [`CTL-5`](security.md#ctl-5) relates to · [`ENT-22`](domain-model.md#ent-22) realizes · [`JRN-3`](ux.md#jrn-3) relates to · [`REL-6`](delivery.md#rel-6) contains · [`SCR-7`](ux.md#scr-7) realizes · [`TP-1`](testing.md#tp-1) verifies · [`UC-3`](backlog.md#uc-3) relates to · [`US-6`](backlog.md#us-6) refines · [`US-9`](backlog.md#us-9) refines · [`UC-1`](backlog.md#uc-1) depends on
+**Referenced by:** [`FEAT-13`](backlog.md#feat-13) relates to · [`ADR-12`](architecture.md#adr-12) relates to · [`ADR-6`](architecture.md#adr-6) relates to · [`CTL-5`](security.md#ctl-5) relates to · [`ENT-22`](domain-model.md#ent-22) realizes · [`JRN-3`](ux.md#jrn-3) relates to · [`REL-6`](delivery.md#rel-6) contains · [`SCR-7`](ux.md#scr-7) realizes · [`TP-1`](testing.md#tp-1) verifies · [`UC-3`](backlog.md#uc-3) relates to · [`US-6`](backlog.md#us-6) refines · [`US-9`](backlog.md#us-9) refines · [`UC-1`](backlog.md#uc-1) depends on
 
 ### FEAT-10 — GUI control plane surface  {: #feat-10 }
 
@@ -115,6 +115,37 @@ One app: artifact import → NL canvas → graph visualizer → deploy picker �
 The product surface that makes the loop usable without a CLI. Open decision: extend Orama Zetta's SDL3/ImGui headed mode vs. a new Tauri/web shell. The velocity is only felt through the GUI.
 
 **Referenced by:** [`ADR-14`](architecture.md#adr-14) relates to · [`API-8`](apis.md#api-8) relates to · [`JRN-1`](ux.md#jrn-1) relates to · [`REL-7`](delivery.md#rel-7) contains
+
+### FEAT-11 — Auto-Suggest — personalized use-case suggestions  {: #feat-11 }
+
+`draft`  ·  `feature`  ·  issue [#554](https://github.com/oramasearch/zetta/issues/554)
+
+Study the user + their data → return personalized, ranked use cases (the "what"); takes the guesswork out of using AI.
+
+Part of the **Personalized Intelligence** theme — *"it knows you and your data."* Even when the user doesn’t know **what** to do with their data, Orama Zetta gets an AI to understand them and their data and hands back personalized, high-value use cases — ranked and ready. Generating these suggested use cases is also the prerequisite that defines the tasks **Auto-RL** trains for. *"Auto-suggest takes the guesswork out of using AI."* The *what* in the what/how/interface trio (Auto-Suggest / Auto-RL / Personalized MCP).
+
+**Realizes / depends on / relates to:** relates to → [`FEAT-6`](backlog.md#feat-6) · realizes → [`GOAL-2`](strategy.md#goal-2) · relates to → [`UC-1`](backlog.md#uc-1)
+**Referenced by:** [`FEAT-12`](backlog.md#feat-12) depends on
+
+### FEAT-12 — Auto-RL — auto-train an agentic RL model on your data  {: #feat-12 }
+
+`draft`  ·  `feature`  ·  issue [#555](https://github.com/oramasearch/zetta/issues/555)
+
+Auto-train a long-horizon, tool-calling RL agent on the customer’s data — the "trained on your data" hard part, done by AI, not a hand-coded harness.
+
+The killer move on the hard part. Trains **long-horizon agentic RL** (an LLM for tool-calling) on the customer’s data to actually *do* the suggested work, producing an agent already fluent in their systems. *"Trained on your own data"* is the part that has always needed a scarce human in the loop and is where most AI projects quietly fail. Auto-RL solves it **with AI itself, not brittle hand-coded harnesses** — the "correct by construction" insight pushed from pipelines to the agent. The engine is general AI (XGBoost / RL / LLM); RL is now a first-class, *automated* path.
+
+**Realizes / depends on / relates to:** refines → [`FEAT-6`](backlog.md#feat-6) · mitigates → [`RSK-2`](risks.md#rsk-2) · depends on → [`FEAT-11`](backlog.md#feat-11)
+
+### FEAT-13 — Personalized MCP — the MCP interface adapts to the user  {: #feat-13 }
+
+`draft`  ·  `feature`  ·  issue [#556](https://github.com/oramasearch/zetta/issues/556)
+
+Talk to Orama Zetta over MCP; the MCP surface personalizes its tools + responses to the user’s preferences — not one-size-fits-all.
+
+MCP is the distribution form factor (agents/clients point at one endpoint). **Personalized MCP** makes that surface *per-user*: the same endpoint shapes its tools and responses to the user’s learned preferences, scoped through identity/governance. Completes end-to-end personalization — the **what** (Auto-Suggest), the **how** (Auto-RL), and the **interface** (Personalized MCP).
+
+**Realizes / depends on / relates to:** realizes → [`GOAL-2`](strategy.md#goal-2) · relates to → [`FEAT-9`](backlog.md#feat-9)
 
 ## User Stories
 
@@ -229,7 +260,7 @@ Plus **optional, user-managed components** the project can include or omit:
 Exercises the AI-project lifecycle: ingest (FEAT-1) → featurize + train (FEAT-6, learns from your data) → validate (FEAT-3, correctness) → deploy (FEAT-4) → run + monitor (FEAT-5) → governed self-serve (FEAT-9), under key-scoped access (RULE-3). The deeper agentic-RL extension is **deferred**. Built via a wtm worktree plan over its issues.
 
 **Realizes / depends on / relates to:** relates to → [`FEAT-6`](backlog.md#feat-6) · relates to → [`PER-1`](personas.md#per-1) · depends on → [`FEAT-1`](backlog.md#feat-1) · depends on → [`FEAT-2`](backlog.md#feat-2) · depends on → [`FEAT-3`](backlog.md#feat-3) · depends on → [`FEAT-4`](backlog.md#feat-4) · depends on → [`FEAT-5`](backlog.md#feat-5) · depends on → [`FEAT-6`](backlog.md#feat-6) · depends on → [`FEAT-9`](backlog.md#feat-9) · relates to → [`RULE-3`](backlog.md#rule-3) · relates to → [`TC-4`](testing.md#tc-4)
-**Referenced by:** [`ADR-23`](architecture.md#adr-23) relates to · [`ADR-26`](architecture.md#adr-26) relates to
+**Referenced by:** [`FEAT-11`](backlog.md#feat-11) relates to · [`ADR-23`](architecture.md#adr-23) relates to · [`ADR-26`](architecture.md#adr-26) relates to
 
 ### UC-2 — Build + deploy a pipeline from natural language  {: #uc-2 }
 

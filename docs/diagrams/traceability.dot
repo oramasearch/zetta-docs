@@ -12,6 +12,9 @@ digraph traceability {
   "FEAT-7" [label="FEAT-7\nTiered storage", fillcolor="#e8f5e9"];
   "FEAT-8" [label="FEAT-8\nCompute-near-data", fillcolor="#e8f5e9"];
   "FEAT-9" [label="FEAT-9\nGoverned self-service", fillcolor="#e8f5e9"];
+  "FEAT-11" [label="FEAT-11\nAuto-Suggest", fillcolor="#e8f5e9"];
+  "FEAT-12" [label="FEAT-12\nAuto-RL", fillcolor="#e8f5e9"];
+  "FEAT-13" [label="FEAT-13\nPersonalized MCP", fillcolor="#e8f5e9"];
   "FR-1" [label="FR-1\nIntent + artifact\ningestion to project", fillcolor="#e3f2fd"];
   "FR-2" [label="FR-2\nArtifact import\nsupport (R1 + planned)", fillcolor="#e3f2fd"];
   "FR-3" [label="FR-3\nCompile to execution-\ngraph IR and allow\nreview/edit", fillcolor="#e3f2fd"];
@@ -29,6 +32,7 @@ digraph traceability {
   "KPI-4" [label="KPI-4\nGovernance guardrails\n(zero-violation)", fillcolor="#e8eaf6"];
   "NFR-1" [label="NFR-1\nNo data egress by\ndefault and verifiable\nexecution locality", fillcolor="#e3f2fd"];
   "NFR-2" [label="NFR-2\nReliability and\nresponsiveness quality\nscenarios", fillcolor="#e3f2fd"];
+  "RSK-2" [label="RSK-2\nGenerated-graph\ncorrectness", fillcolor="#fbe9e7"];
   "RSK-6" [label="RSK-6\nUnvalidated cost-\nsavings claim", fillcolor="#fbe9e7"];
   "SCR-1" [label="SCR-1\nDashboard", fillcolor="#fce4ec"];
   "SCR-2" [label="SCR-2\nNew Project (Intent +\nImport)", fillcolor="#fce4ec"];
@@ -122,4 +126,11 @@ digraph traceability {
   "US-7" -> "FEAT-8" [label="refines"];
   "US-8" -> "FEAT-4" [label="refines"];
   "US-9" -> "FEAT-9" [label="refines"];
+  "FEAT-11" -> "FEAT-6" [label="relates to"];
+  "FEAT-11" -> "GOAL-2" [label="realizes"];
+  "FEAT-12" -> "FEAT-6" [label="refines"];
+  "FEAT-12" -> "RSK-2" [label="mitigates"];
+  "FEAT-12" -> "FEAT-11" [label="depends on"];
+  "FEAT-13" -> "GOAL-2" [label="realizes"];
+  "FEAT-13" -> "FEAT-9" [label="relates to"];
 }

@@ -27,7 +27,7 @@ Self-service that ships confidently-wrong pipelines is worse than the bottleneck
 Guaranteeing a generated graph is 'robust, correct, professionally architected' is hard. **Mitigation:** the correctness gate (schema/leakage/point-in-time + a correctness eval) must block deploy; set a correctness floor before shipping self-service to non-engineers.
 
 **Realizes / depends on / relates to:** affects → [`FEAT-6`](backlog.md#feat-6)
-**Referenced by:** [`ADR-3`](architecture.md#adr-3) mitigates
+**Referenced by:** [`FEAT-12`](backlog.md#feat-12) mitigates · [`ADR-3`](architecture.md#adr-3) mitigates
 
 ### RSK-3 — Control-plane on CRDT without transactions/leadership  {: #rsk-3 }
 

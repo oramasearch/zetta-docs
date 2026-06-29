@@ -39,7 +39,7 @@ Shift the build-and-deploy capability off the central team to the edge.
 Maximize the share of pipelines deployed without the platform team in the loop — directly relieving the shift-left bottleneck. Inverse signal: tickets filed / 'waiting on the platform lead.'
 
 **Realizes / depends on / relates to:** refines → [`VIS-1`](strategy.md#vis-1)
-**Referenced by:** [`KPI-3`](strategy.md#kpi-3) relates to
+**Referenced by:** [`FEAT-11`](backlog.md#feat-11) realizes · [`FEAT-13`](backlog.md#feat-13) realizes · [`KPI-3`](strategy.md#kpi-3) relates to
 
 ### GOAL-3 — Hold correctness  {: #goal-3 }
 
